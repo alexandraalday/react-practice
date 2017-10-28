@@ -5,6 +5,18 @@ import Comment from './Comment.js';
 import Author from './Author.js';
 
 class Post extends Component {
+  constructor (props) {
+    super()
+    this.state = {
+      body: props.body
+    }
+  }
+  changeBody(e) {
+    let bodyInput = prompt("What did you want to say?")
+    this.setState({
+      body: bodyInput
+    })
+  }
   render() {
     let allAuthors = this.props.authors.map( (author, index) => (
       <Author author={author} key={index} /> ))
@@ -18,7 +30,8 @@ class Post extends Component {
         <h1>{this.props.title}</h1>
         {allAuthors}
         <div>
-          <p>{this.props.body}</p>
+          <p>{this.state.body}</p>
+          <button onClick={(e) => this.changeBody(e)}>Edit body</button>
         </div>
         <h3>Comments:</h3>
         {allComments}
