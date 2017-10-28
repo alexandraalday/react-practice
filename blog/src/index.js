@@ -4,7 +4,7 @@ import Post from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-let post = {
+const post = {
     title: "Dinosaurs are awesome",
     authors: ["Stealthy Stegosaurus", "Tiny trex", "Iguanodon Ivory"],
     body: "Check out this body property!",
