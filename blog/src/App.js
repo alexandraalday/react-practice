@@ -13,14 +13,14 @@ class Post extends Component {
   }
 
   changeBody(e) {
-    let bodyInput = prompt("What did you want to say?")
-    this.setState({
+    let bodyInput = prompt("What did you want to say?") // using a prompt is gross though
+    this.setState({ // called to update the component's state
       body: bodyInput
     })
   }
 
   changeBodyViaForm(e) {
-    this.setState({
+    this.setState({ //called to update the component's state
       body: e.target.value
     })
   }
