@@ -4,5 +4,7 @@ import './index.css';
 import MyList from './MyList';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<MyList />, document.getElementById('root'));
+let toDos = ["Buy ice cream", "Eat ice cream", "Go to the gym"]
+
+ReactDOM.render(<MyList theList={toDos} />, document.getElementById('root'));
 registerServiceWorker();
