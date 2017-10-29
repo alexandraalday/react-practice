@@ -107,14 +107,36 @@ class StuffTable extends React.Component {
   }
 
   addStuff(newStuff) {
-this.setState(prevState => ({
+   this.setState(prevState => ({
       stuff: prevState.stuff.concat(newStuff)
     }))
   }
 
 }
 ```
+---
+## The componentWillMount() Method
 
+This is in the first part of the component lifecycle - `initializing/mounting`. This method is called immediately before a component is rendered to the DOM.
+
+`componentWillMount` is usually only needed in advanced use cases such as server rendering.
+---
+
+## The componentDidMount() Method
+
+The `componentDidMount` method is called once, immediately after your component is rendered to the DOM. It is in the first part of the component lifecycle - `initializing/mounting`.
+
+If you want to make an AJAX request when your component first renders, do it here (not in the constructor or in `componentWillMount`).
+
+- `componentWillMount` shouldn't be used for server requests because it may be invoked multiple times before the render in future versions of React.
+
+```
+componentDidMount() {
+  fetch(`http://api.com/${this.props.id}`)
+    .then(response => response.json())
+    .then(data => this.setState(prevState => ({ data })))
+}
+```
 
 
 
