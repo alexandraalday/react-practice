@@ -256,3 +256,15 @@ We can wrap `<Link>` tags around whatever text that we want to display to the us
    - `to`: This designates what path to navigate to when the user clicks the link.
 
 For example, `<Link to="/procedures">See Our Procedures</Link>`
+
+---
+## API Calls
+
+`componentDidMount()` is where we should make API calls. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+
+The value of the this keyword in JavaScript changes depending on what function is being executed.
+
+   - Its relative value depends on the function that contains it.
+
+   - The `fetch()` call involves many callbacks with several different functions. In order to preserve the initial context of our React component, we need to create a new variable, `base`, to keep track of the original value of the `this` keyword. Saving the original value of this to `base` allows us to access methods like `this.setState()` through `base.setState()` throughout all of the different functions.
+
