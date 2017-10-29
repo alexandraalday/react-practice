@@ -227,8 +227,32 @@ Here's what React Router provides:
 
    - History: It automatically manages browser history when the user navigates between content.
 
+---
 
+## General syntax for creating routes
 
+Each `<Route>` component has two pieces:
 
+   - `path` - This defines the URL path that leads to the component.
 
+   - `component` - This defines what component users will see when they navigate to the path.
 
+A single route looks like this: `<Route path="/contacts" component={Contact} />`
+
+Import syntax: 
+
+```
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+```
+
+We can wrap `<Link>` tags around whatever text that we want to display to the user to click on. The pieces of this are:
+
+   - `<Link>`: This creates <a> tags and automatically integrates modern HTML5 browser history mechanics for the single-page application. It has one attribute:
+
+   - `to`: This designates what path to navigate to when the user clicks the link.
+
+For example, `<Link to="/procedures">See Our Procedures</Link>`
