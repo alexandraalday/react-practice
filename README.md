@@ -199,7 +199,7 @@ They are generally used for performance optimizations.
 
 ---
 
-# Component Lifecycle Summary
+## Component Lifecycle Summary
 
 React class components have lifecycle methods that are invoked at certain stages of a component's "life" on the DOM. Some of the lifecycle methods you'll use frequently include:
 
@@ -213,6 +213,19 @@ React class components have lifecycle methods that are invoked at certain stages
 
    - `render()`: Returns markup/UI.
 
+
+---
+## React Router
+
+React Router is a library that makes it easy for us to route URLs.
+
+   - Instead of routing to different pages, we dynamically load different components on the same page
+
+Here's what React Router provides:
+
+   - Routing: It easily defines what content is associated with what URLs.
+
+   - History: It automatically manages browser history when the user navigates between content.
 
 
 
