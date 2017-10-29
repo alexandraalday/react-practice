@@ -120,6 +120,7 @@ class StuffTable extends React.Component {
 This is in the first part of the component lifecycle - `initializing/mounting`. This method is called immediately before a component is rendered to the DOM.
 
 `componentWillMount` is usually only needed in advanced use cases such as server rendering.
+
 ---
 
 ## The componentDidMount() Method
@@ -137,6 +138,46 @@ componentDidMount() {
     .then(data => this.setState(prevState => ({ data })))
 }
 ```
+---
+
+## Methods for Event Listeners
+
+Another common use for `componentDidMount` is to bind event listeners to your component. You can then remove the event listeners in `componentWillUnmount`.
+
+```
+class StuffTable extends React.component {
+
+  componentDidMount() {
+    document.addEventListener('dragover', this.handleDragStart)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('dragover', this.handleDragStart)
+  }
+
+  handleDragStart(e) {
+    e.preventDefault()
+    this.setState(prevState => ({
+      dragging: true
+    }))
+  }
+
+}
+```
+
+---
+
+## The render() method
+
+`render` is the one method that every React class component must have.
+
+   - `render` is called in two parts of the component lifecycle - at the beginning, when the component is being initiated/mounted, and when the component is being updated.
+
+   - In `render`, you return JSX using the component's `props` and `state`.
+
+   - Never set `state` in `render`. `render` should only react to changes in `state` or `props`; it should not create those changes.
+
+
 
 
 
