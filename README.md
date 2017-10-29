@@ -56,7 +56,66 @@ Methods include:
 
  The method is:
      
-   -` componentWillUnmount()`
+   - `componentWillUnmount()`
+
+---
+
+## The constructor() method
+
+This is in the first part of the component lifecycle - `initializing/mounting`.
+
+Like any JavaScript class, the constructor method:
+
+   - Is called when a component is instantiated (when it's first rendered).
+
+   - In a class constructor, you must call super before doing anything else. A React component constructor in its most basic form looks like this:
+
+```
+constructor(props) {
+  super(props)
+}
+```
+You don't need to define a constructor if that's all it does, however.
+
+   - This happens automatically when your component is invoked.
+   - A common use of the constructor is to initialize state using the props passed to the component — as we have been doing!
+
+```
+constructor(props) {
+  super(props)
+  this.state = {
+    someproperty: props.someproperty
+  }
+}
+```
+
+Notice that in this constructor, `this.addStuff` is bound to the class here: `this.addStuff = this.addStuff.bind(this)`.
+
+Now, if we pass `this.addStuff` to a child component as an `onChange` callback, it will be bound to `StuffTable` and will update its state when it's invoked.
+
+You don't need a constructor in every React component, but if you need to initialize `state` by `props` or `bind` methods, the constructor is where you do it.
+
+```
+class StuffTable extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      stuff: props.stuff
+    }
+    this.addStuff = this.addStuff.bind(this)
+  }
+
+  addStuff(newStuff) {
+this.setState(prevState => ({
+      stuff: prevState.stuff.concat(newStuff)
+    }))
+  }
+
+}
+```
+
+
 
 
 
