@@ -1,52 +1,59 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Comment from './Comment.js';
-import Author from './Author.js';
 
-class Post extends Component {
-  constructor (props) { // Upon instantiation of your component, the constructor method is called.
-    super() // It calls super, which is the base class (React.Component)'s constructor.
-    this.state = { // the component's initial state is set
-      body: props.body
-    }
-  }
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-  changeBody(e) {
-    let bodyInput = prompt("What did you want to say?") // using a prompt is gross though
-    this.setState({ // called to update the component's state
-      body: bodyInput
-    })
-  }
+import Blog from './Blog.js';
+import Home from './Home.js';
+import About from './About.js';
+import Movie from './Movie.js';
+import Food from './Food.js';
+import './App.css';
 
-  changeBodyViaForm(e) {
-    this.setState({ //called to update the component's state
-      body: e.target.value
-    })
-  }
-
-  render() {
-    let allAuthors = this.props.authors.map( (author, index) => (
-      <Author author={author} key={index} /> ))
-    let allComments = [
-      <Comment body={this.props.comments[0]} />,
-      <Comment body={this.props.comments[1]} />,
-      <Comment body={this.props.comments[2]} />
-    ]
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        {allAuthors}
-        <div>
-          <p>{this.state.body}</p>
-          <button onClick={(e) => this.changeBody(e)}>Edit body</button>
-          <input type="text" onChange={(e) => this.changeBodyViaForm(e)} />
-        </div>
-        <h3>Comments:</h3>
-        {allComments}
-      </div>
-    );
-  }
+const post = {
+  title: "Baby's first post",
+  authors: [
+    "Stealthy Stegosaurus",
+    "Tiny trex",
+    "Iguanadon Ivory"
+  ],
+  body: "look at me i'm a posting baby!",
+  comments: [
+    "First!",
+    "Great post!",
+    "hire him!"
+  ]
 }
 
-export default Post;
+const App = () => (
+  <Router>
+    <div>
+      <nav>
+        <Link to="/">Home</Link>{' '}
+        <Link to="/blog">My Blog</Link>{' '}
+        <Link to="/about">About moi</Link>{' '}
+        <Link to="/movie">The best movie</Link>{' '}
+        <Link to="/food">Favorite Food</Link>
+      </nav>
+
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/movie" component={Movie}/>
+      <Route path="/food" component={Food}/>
+      <Route path="/blog" component={
+        () => (<Blog title={post.title}
+                  allAuthors={post.authors}
+                  body={post.body}
+                  comments={post.comments} />
+        )}/>
+    </div>
+  </Router>
+)
+
+export default App
