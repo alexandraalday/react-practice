@@ -177,6 +177,43 @@ class StuffTable extends React.component {
 
    - Never set `state` in `render`. `render` should only react to changes in `state` or `props`; it should not create those changes.
 
+---
+
+## The componentWillReceiveProps(newProps) Method
+
+This method is called anytime your component receives new `props`.
+
+  -  It is not called with the initial `props` when your component initially mounts.
+
+  -  If you need to change the state of your component based on changes in the `props`, do it here.
+
+In a simple app, you generally won't need `componentWillReceiveProps`.
+
+---
+
+## The shouldComponentUpdate(), componentWillUpdate(), and componentDidUpdate() Methods
+
+These methods are called when a component's `props` or `state` change.
+
+They are generally used for performance optimizations.
+
+---
+
+# Component Lifecycle Summary
+
+React class components have lifecycle methods that are invoked at certain stages of a component's "life" on the DOM. Some of the lifecycle methods you'll use frequently include:
+
+   - `constructor()`: Initializes state, binds methods.
+
+   - `componentDidMount()`: Makes AJAX requests, gets DOM refs, binds event listeners, sets state if necessary.
+
+   - `componentWillUnmount()`: Unbinds event listeners, performs other clean up.
+
+   - `componentWillReceiveProps()`: Updates state based on changes in components.
+
+   - `render()`: Returns markup/UI.
+
+
 
 
 
