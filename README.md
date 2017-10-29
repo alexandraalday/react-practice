@@ -290,5 +290,40 @@ Declarative and imperative are two different styles of writing code.
 
    - Functional programming is a subset of declarative programming.
 
+--- 
+## Routing Clean URLs With React Router
+
+Create a `static.json` file to configure the web server for clean `browserHistory` URLs with React Router:
+```
+{
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  }
+}
+```
+---
+
+## CORS With Heroku Proxy
+
+We'll configure this using proxy back-ends from the static site buildpack.
+
+Add `"proxies"` to `static.json`:
+```
+{
+  "proxies": {
+    "/api/": {
+      "origin": "${API_URL}"
+    }
+  }
+}
+```
+Then, point the React UI app to a specific back-end API using the CLI:
+
+`heroku config:set API_URL="https://api.example.com"`
+
+
+
 
 
