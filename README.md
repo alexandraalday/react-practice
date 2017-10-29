@@ -268,3 +268,27 @@ The value of the this keyword in JavaScript changes depending on what function i
 
    - The `fetch()` call involves many callbacks with several different functions. In order to preserve the initial context of our React component, we need to create a new variable, `base`, to keep track of the original value of the `this` keyword. Saving the original value of this to `base` allows us to access methods like `this.setState()` through `base.setState()` throughout all of the different functions.
 
+---
+
+## Imperative and Declarative Programming
+
+Declarative and imperative are two different styles of writing code.
+
+#### Imperative
+
+   - Commonly found in object-oriented programming environments where you focus on a line-by-line execution path, working with objects.
+
+   - It allows precise control over your code and line-by-line code execution — you're writing every single thing that happens.
+
+#### Declarative
+
+   - Instead of writing every single step yourself — i.e., instead of explicitly writing the why, how, where, and when of your program — this method only cares about what you want.
+
+   - Instead of taking the time to write out a specific set of instructions to receive a result, you focus on just one thing: the result.
+
+   - React.js is one framework that uses a declarative approach. Vue.js is another. You'll find that many asynchronous JavaScript techniques rely on declarative programming techniques for ease of readability.
+
+   - Functional programming is a subset of declarative programming.
+
+
+
